@@ -30,63 +30,113 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Неисправно));
             this.deletebutton = new Nevron.Nov.WinFormControls.NButtonControl();
-            this.boxcount = new MetroFramework.Controls.MetroComboBox();
-            this.eqbox = new MetroFramework.Controls.MetroComboBox();
+            this.logtext2 = new MetroFramework.Controls.MetroTextBox();
+            this.logtext = new MetroFramework.Controls.MetroTextBox();
+            this.nButtonControl1 = new Nevron.Nov.WinFormControls.NButtonControl();
             this.SuspendLayout();
             // 
             // deletebutton
             // 
             this.deletebutton.AutoSize = false;
             this.deletebutton.DesignTimeState = resources.GetString("deletebutton.DesignTimeState");
-            this.deletebutton.Location = new System.Drawing.Point(99, 152);
+            this.deletebutton.Location = new System.Drawing.Point(23, 152);
             this.deletebutton.Name = "deletebutton";
             this.deletebutton.Size = new System.Drawing.Size(168, 51);
             this.deletebutton.TabIndex = 16;
             this.deletebutton.Click += new Nevron.Nov.Function<Nevron.Nov.Dom.NEventArgs>(this.deletebutton_Click);
             // 
-            // boxcount
+            // logtext2
             // 
-            this.boxcount.FormattingEnabled = true;
-            this.boxcount.ItemHeight = 23;
-            this.boxcount.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.boxcount.Location = new System.Drawing.Point(299, 87);
-            this.boxcount.Name = "boxcount";
-            this.boxcount.PromptText = "Кол-во";
-            this.boxcount.Size = new System.Drawing.Size(73, 29);
-            this.boxcount.Style = MetroFramework.MetroColorStyle.Red;
-            this.boxcount.TabIndex = 15;
-            this.boxcount.UseSelectable = true;
             // 
-            // eqbox
             // 
-            this.eqbox.FormattingEnabled = true;
-            this.eqbox.ItemHeight = 23;
-            this.eqbox.Location = new System.Drawing.Point(13, 89);
-            this.eqbox.Name = "eqbox";
-            this.eqbox.PromptText = "Код оборудования";
-            this.eqbox.Size = new System.Drawing.Size(265, 29);
-            this.eqbox.Style = MetroFramework.MetroColorStyle.Red;
-            this.eqbox.TabIndex = 14;
-            this.eqbox.UseSelectable = true;
+            // 
+            this.logtext2.CustomButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logtext2.CustomButton.Image = null;
+            this.logtext2.CustomButton.Location = new System.Drawing.Point(39, 2);
+            this.logtext2.CustomButton.Name = "";
+            this.logtext2.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.logtext2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.logtext2.CustomButton.TabIndex = 1;
+            this.logtext2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.logtext2.CustomButton.UseSelectable = true;
+            this.logtext2.CustomButton.Visible = false;
+            this.logtext2.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.logtext2.Lines = new string[0];
+            this.logtext2.Location = new System.Drawing.Point(284, 80);
+            this.logtext2.MaxLength = 32767;
+            this.logtext2.Name = "logtext2";
+            this.logtext2.PasswordChar = '\0';
+            this.logtext2.PromptText = "Кол-во";
+            this.logtext2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.logtext2.SelectedText = "";
+            this.logtext2.SelectionLength = 0;
+            this.logtext2.SelectionStart = 0;
+            this.logtext2.ShortcutsEnabled = true;
+            this.logtext2.Size = new System.Drawing.Size(77, 40);
+            this.logtext2.Style = MetroFramework.MetroColorStyle.Red;
+            this.logtext2.TabIndex = 23;
+            this.logtext2.UseSelectable = true;
+            this.logtext2.WaterMark = "Кол-во";
+            this.logtext2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.logtext2.WaterMarkFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            // 
+            // logtext
+            // 
+            // 
+            // 
+            // 
+            this.logtext.CustomButton.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logtext.CustomButton.Image = null;
+            this.logtext.CustomButton.Location = new System.Drawing.Point(206, 2);
+            this.logtext.CustomButton.Name = "";
+            this.logtext.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.logtext.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.logtext.CustomButton.TabIndex = 1;
+            this.logtext.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.logtext.CustomButton.UseSelectable = true;
+            this.logtext.CustomButton.Visible = false;
+            this.logtext.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.logtext.Lines = new string[0];
+            this.logtext.Location = new System.Drawing.Point(23, 80);
+            this.logtext.MaxLength = 32767;
+            this.logtext.Name = "logtext";
+            this.logtext.PasswordChar = '\0';
+            this.logtext.PromptText = "Название оборудования";
+            this.logtext.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.logtext.SelectedText = "";
+            this.logtext.SelectionLength = 0;
+            this.logtext.SelectionStart = 0;
+            this.logtext.ShortcutsEnabled = true;
+            this.logtext.Size = new System.Drawing.Size(244, 40);
+            this.logtext.Style = MetroFramework.MetroColorStyle.Red;
+            this.logtext.TabIndex = 22;
+            this.logtext.UseSelectable = true;
+            this.logtext.WaterMark = "Название оборудования";
+            this.logtext.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.logtext.WaterMarkFont = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            // 
+            // nButtonControl1
+            // 
+            this.nButtonControl1.AutoSize = false;
+            this.nButtonControl1.DesignTimeState = resources.GetString("nButtonControl1.DesignTimeState");
+            this.nButtonControl1.Location = new System.Drawing.Point(197, 152);
+            this.nButtonControl1.Name = "nButtonControl1";
+            this.nButtonControl1.Size = new System.Drawing.Size(168, 51);
+            this.nButtonControl1.TabIndex = 24;
+            this.nButtonControl1.Click += new Nevron.Nov.Function<Nevron.Nov.Dom.NEventArgs>(this.nButtonControl1_Click);
             // 
             // Неисправно
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 242);
+            this.Controls.Add(this.nButtonControl1);
+            this.Controls.Add(this.logtext2);
+            this.Controls.Add(this.logtext);
             this.Controls.Add(this.deletebutton);
-            this.Controls.Add(this.boxcount);
-            this.Controls.Add(this.eqbox);
+            this.MaximizeBox = false;
             this.Name = "Неисправно";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Неисправно";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
@@ -98,7 +148,8 @@
         #endregion
 
         private Nevron.Nov.WinFormControls.NButtonControl deletebutton;
-        private MetroFramework.Controls.MetroComboBox boxcount;
-        private MetroFramework.Controls.MetroComboBox eqbox;
+        private MetroFramework.Controls.MetroTextBox logtext2;
+        private MetroFramework.Controls.MetroTextBox logtext;
+        private Nevron.Nov.WinFormControls.NButtonControl nButtonControl1;
     }
 }

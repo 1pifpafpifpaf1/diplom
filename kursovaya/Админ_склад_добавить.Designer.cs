@@ -85,7 +85,9 @@
             this.ClientSize = new System.Drawing.Size(355, 216);
             this.Controls.Add(this.addbutton);
             this.Controls.Add(this.logtext);
+            this.MaximizeBox = false;
             this.Name = "Админ_склад_добавить";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Добавить склад";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

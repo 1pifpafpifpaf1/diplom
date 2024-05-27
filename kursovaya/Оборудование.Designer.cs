@@ -78,7 +78,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
+            this.MaximizeBox = false;
             this.Name = "Оборудование";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Оборудование";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

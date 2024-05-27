@@ -43,6 +43,7 @@ namespace kursovaya
                 MessageBox.Show($"Склад удален");
             }
             DB.CloseConnection();
+            this.Hide();
         }
     }
 }

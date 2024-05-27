@@ -95,8 +95,31 @@ namespace kursovaya
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Админ_склад_удалить sm = new Админ_склад_удалить();
-            sm.ShowDialog();
+            /*            Админ_склад_удалить sm = new Админ_склад_удалить();
+                        sm.ShowDialog();*/
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Вы точно хотите удалить данный склад?", "Подтверждение удаления", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                    int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id_sklad"].Value);
+
+                    DB.OpenConnection();
+                    using (MySqlCommand command = new MySqlCommand("DELETE FROM sklad WHERE id_sklad = @id_sklad", DB.getConnection()))
+                    {
+                        command.Parameters.AddWithValue("@id_sklad", id);
+                        command.ExecuteNonQuery();
+                    }
+                    FillDataGridView();
+                    dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
+                    DB.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите строку для удаления.");
+            }
         }
     }
 }

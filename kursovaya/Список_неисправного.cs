@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace kursovaya
 {
-    public partial class СписокЗапросов : MetroFramework.Forms.MetroForm
+    public partial class Список_неисправного : MetroFramework.Forms.MetroForm
     {
-        public СписокЗапросов()
+        public Список_неисправного()
         {
             InitializeComponent();
         }
@@ -35,13 +35,13 @@ namespace kursovaya
             DB.OpenConnection();
             //Запрос для вывода строк в БД
             string commandStr = "SELECT " +
-                "request.id_request AS 'Код', " +
+                "eq_destroyed.id_eq_des AS 'Код', " +
                 "equipment.eq_name AS 'Название', " +
-                "request.id_sklad AS 'Склад', " +
-                "request.eq_count AS 'Количество', " +
-                "request.data_req AS 'Дата запроса' " +
-                                    "FROM request " +
-                                    $"JOIN equipment ON equipment.id_equipment = request.id_equipment WHERE NOT id_sklad = '{Auth.auth_role}'";
+                "eq_destroyed.id_sotr AS 'Код сотрудника', " +
+                "eq_destroyed.eq_count AS 'Количество', " +
+                "eq_destroyed.data_des AS 'Дата назначения' " +
+                                    "FROM eq_destroyed " +
+                                    $"JOIN equipment ON equipment.id_equipment = eq_destroyed.id_equipment WHERE id_sotr = '{Auth.auth_id}'";
             //Объявляем команду, которая выполнит запрос в соединении
             MyDA.SelectCommand = new MySqlCommand(commandStr, DB.getConnection());
             //Заполняем таблицу записями из БД
@@ -54,20 +54,12 @@ namespace kursovaya
             DB.CloseConnection();
         }
 
-        private void СписокЗапросов_Load(object sender, EventArgs e)
+        private void Список_неисправного_Load(object sender, EventArgs e)
         {
             GetListEq();
             //Показываем заголовки столбцов
             dataGridView1.ColumnHeadersVisible = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            //Чистим виртуальную таблицу
-            table.Clear();
-            //Вызываем метод получения записей, который вновь заполнит таблицу
-            GetListEq();
         }
     }
 }

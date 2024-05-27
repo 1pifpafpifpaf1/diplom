@@ -28,21 +28,23 @@ namespace kursovaya
         {
             string name = logtext.Text;
             DB.OpenConnection();
-            string commandStr = $"SELECT id_equipment FROM equipment WHERE eq_name = ('{name}')";
+            string commandStr = $"SELECT id_equipment FROM equipment WHERE eq_name = (@name)";
             MySqlCommand comm = new MySqlCommand(commandStr, DB.getConnection());
+            comm.Parameters.AddWithValue("@name", name);
             int countt = Convert.ToInt32(comm.ExecuteScalar());
             if (countt > 0)
             {
-                MessageBox.Show($"Оборудование уже существует");
+                MessageBox.Show("Оборудование уже существует");
             }
             else if (countt == 0)
             {
-                string eq = $"INSERT INTO equipment (eq_name) VALUES ('{name}')";
+                string eq = "INSERT INTO equipment (eq_name) VALUES (@name)";
                 MySqlCommand command = new MySqlCommand(eq, DB.getConnection());
+                command.Parameters.AddWithValue("@name", name);
                 command.ExecuteNonQuery();
-                MessageBox.Show($"Оборудование добавлено");
+                MessageBox.Show("Оборудование добавлено");
             }
-
+            this.Hide();
         }
     }
 }

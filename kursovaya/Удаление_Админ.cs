@@ -44,6 +44,7 @@ namespace kursovaya
                 MessageBox.Show($"Оборудование удаление");
             }
             DB.CloseConnection();
+            this.Hide();
         }
 
         private void logtext_Click(object sender, EventArgs e)

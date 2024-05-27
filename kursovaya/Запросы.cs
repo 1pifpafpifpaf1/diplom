@@ -73,57 +73,66 @@ namespace kursovaya
             string idsklad = $"SELECT id_sklad FROM request WHERE id_request = {id_req}";
             MySqlCommand comm5 = new MySqlCommand(idsklad, DB.getConnection());
             int id_sklad = Convert.ToInt32(comm5.ExecuteScalar());
-            string del = $"DELETE FROM request WHERE id_request = {id_req}";
-            MySqlCommand comm = new MySqlCommand(del, DB.getConnection());
-            comm.ExecuteNonQuery();
             string commandStr = $"SELECT eq_count FROM eq_sklad WHERE id_equipment = {id_eq} AND id_sklad = {id_sklad}";
             MySqlCommand comm3 = new MySqlCommand(commandStr, DB.getConnection());
             int countt = Convert.ToInt32(comm3.ExecuteScalar());
-
-            if (countt > 0)
-            {
-
-                countt += count;
-                // запрос обновления данных
-                string update = $"UPDATE eq_sklad SET eq_count = '{countt}' WHERE id_equipment = {id_eq} AND id_sklad = {id_sklad}";
-                // объект для выполнения SQL-запроса
-                MySqlCommand command = new MySqlCommand(update, DB.getConnection());
-                // выполняем запрос
-                command.ExecuteNonQuery();
-            }
-            else if (countt == 0)
-            {
-                string eq_sklad = $"INSERT INTO eq_sklad (id_equipment, id_sklad, eq_count) VALUES ('{id_eq}', '{id_sklad}','{count}')";
-                MySqlCommand command = new MySqlCommand(eq_sklad, DB.getConnection());
-                command.ExecuteNonQuery();
-            }
             string deleq = $"SELECT eq_count FROM eq_sklad WHERE id_equipment = {id_eq} AND id_sklad = {Auth.auth_role}";
             MySqlCommand comm4 = new MySqlCommand(deleq, DB.getConnection());
             int countt2 = Convert.ToInt32(comm4.ExecuteScalar());
-            if (countt2 >= count)
+            if (countt2 > 0)
             {
-                countt2 -= count;
-                if (countt2 > 0)
+                string del = $"DELETE FROM request WHERE id_request = {id_req}";
+                MySqlCommand comm = new MySqlCommand(del, DB.getConnection());
+                comm.ExecuteNonQuery();
+                if (countt > 0)
                 {
 
+                    countt += count;
                     // запрос обновления данных
-                    string update = $"UPDATE eq_sklad SET eq_count = '{countt2}' WHERE id_equipment = {id_eq} AND id_sklad = {Auth.auth_role}";
+                    string update = $"UPDATE eq_sklad SET eq_count = '{countt}' WHERE id_equipment = {id_eq} AND id_sklad = {id_sklad}";
                     // объект для выполнения SQL-запроса
                     MySqlCommand command = new MySqlCommand(update, DB.getConnection());
-                    // выполняем запрос    
+                    // выполняем запрос
                     command.ExecuteNonQuery();
                 }
-                else if (countt2 == 0)
+                else if (countt == 0)
                 {
-                    string delete = $"DELETE FROM eq_sklad WHERE id_equipment = {id_eq} AND id_sklad = {Auth.auth_role}";
-                    // объект для выполнения SQL-запроса
-                    MySqlCommand command = new MySqlCommand(delete, DB.getConnection());
-                    // выполняем запрос    
+                    string eq_sklad = $"INSERT INTO eq_sklad (id_equipment, id_sklad, eq_count) VALUES ('{id_eq}', '{id_sklad}','{count}')";
+                    MySqlCommand command = new MySqlCommand(eq_sklad, DB.getConnection());
                     command.ExecuteNonQuery();
                 }
-                MessageBox.Show("Запрос подтвержден");
-                DB.CloseConnection();
+                if (countt2 >= count)
+                {
+                    countt2 -= count;
+                    if (countt2 > 0)
+                    {
+
+                        // запрос обновления данных
+                        string update = $"UPDATE eq_sklad SET eq_count = '{countt2}' WHERE id_equipment = {id_eq} AND id_sklad = {Auth.auth_role}";
+                        // объект для выполнения SQL-запроса
+                        MySqlCommand command = new MySqlCommand(update, DB.getConnection());
+                        // выполняем запрос    
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Запрос подтвержден");
+                    }
+                    else if (countt2 == 0)
+                    {
+                        string delete = $"DELETE FROM eq_sklad WHERE id_equipment = {id_eq} AND id_sklad = {Auth.auth_role}";
+                        // объект для выполнения SQL-запроса
+                        MySqlCommand command = new MySqlCommand(delete, DB.getConnection());
+                        // выполняем запрос    
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Запрос подтвержден");
+                    }
+                }
             }
+            else if (countt2 <= 0)
+            {
+                MessageBox.Show("На складе недостаточно оборудования");
+            }
+
+            DB.CloseConnection();
+            this.Hide();
         }
             private void eqbox_SelectedIndexChanged(object sender, EventArgs e)
             {

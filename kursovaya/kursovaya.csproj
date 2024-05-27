@@ -292,6 +292,18 @@
     <Compile Include="Склад2.Designer.cs">
       <DependentUpon>Склад2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Список_в_работе.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Список_в_работе.Designer.cs">
+      <DependentUpon>Список_в_работе.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Список_неисправного.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Список_неисправного.Designer.cs">
+      <DependentUpon>Список_неисправного.cs</DependentUpon>
+    </Compile>
     <Compile Include="СписокЗапросов.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -375,6 +387,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Склад2.resx">
       <DependentUpon>Склад2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Список_в_работе.resx">
+      <DependentUpon>Список_в_работе.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Список_неисправного.resx">
+      <DependentUpon>Список_неисправного.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="СписокЗапросов.resx">
       <DependentUpon>СписокЗапросов.cs</DependentUpon>

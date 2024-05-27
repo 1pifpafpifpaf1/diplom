@@ -43,6 +43,7 @@ namespace kursovaya
                 MessageBox.Show($"Сотрудник удален");
             }
             DB.CloseConnection();
+            this.Hide();
         }
     }
 }

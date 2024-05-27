@@ -62,18 +62,13 @@ namespace kursovaya
             {
                 MessageBox.Show("Неверные данные");
             }
-            //else if (Connection(logtext.Text, hashtext.Text) == 2)
-            //{
-            //    MessageBox.Show("Вы авторизированы как управляющий 2 склада");
-            //    Склад sm = new Склад();
-            //    sm.ShowDialog();
-            //}
             else if (Connection(logtext.Text, hashtext.Text) == 3)
             {
                 MessageBox.Show($"Вы авторизированы как Админ");
                 //Скрытие данной формы и запуск следующей в зависимости от введёных данных
                 Админ sm = new Админ();
                 sm.ShowDialog();
+                this.Hide();
             }
             else if (Connection(logtext.Text, hashtext.Text) == Auth.auth_role)
             {
@@ -81,6 +76,7 @@ namespace kursovaya
                 //Скрытие данной формы и запуск следующей в зависимости от введёных данных
                 Склад sm = new Склад();
                 sm.ShowDialog();
+                this.Hide();
             }
 
         }
@@ -104,10 +100,10 @@ namespace kursovaya
         private void loginbutton_Click(Nevron.Nov.Dom.NEventArgs arg)
         {
             hashtext.Text = sha256(passtext.Text);
-            Thread myThread1 = new Thread(Rang);
+            Rang();
+            /*Thread myThread1 = new Thread(Rang);
             myThread1.SetApartmentState(ApartmentState.STA);
-            myThread1.Start();
-            this.Hide();
+            myThread1.Start();*/
         }
 
 

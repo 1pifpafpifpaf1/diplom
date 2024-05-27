@@ -237,7 +237,7 @@
             this.loginbutton.Name = "loginbutton";
             this.loginbutton.Size = new System.Drawing.Size(230, 55);
             this.loginbutton.TabIndex = 18;
-            this.loginbutton.Click += new Nevron.Nov.Function<Nevron.Nov.Dom.NEventArgs>(this.loginbutton_Click);
+            this.loginbutton.Click += new Nevron.Nov.Function<Nevron.Nov.Dom.NEventArgs>(this.loginbutton_Click_1);
             // 
             // hashtext
             // 
@@ -287,7 +287,9 @@
             this.Controls.Add(this.posttext);
             this.Controls.Add(this.phonetext);
             this.Controls.Add(this.fiotext);
+            this.MaximizeBox = false;
             this.Name = "Админ_регистрация";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Регистрация сотрудника";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

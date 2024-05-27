@@ -72,7 +72,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
             this.Name = "Админ";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Админ панель";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

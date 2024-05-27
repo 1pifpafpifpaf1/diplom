@@ -42,7 +42,7 @@ namespace kursovaya
 
         }
 
-        private void loginbutton_Click(Nevron.Nov.Dom.NEventArgs arg)
+        private void loginbutton_Click_1(Nevron.Nov.Dom.NEventArgs arg)
         {
             foreach (MetroTextBox metroTextField in metroTextFields)
             {
@@ -52,9 +52,23 @@ namespace kursovaya
                     return;
                 }
             }
-            hashtext.Text = sha256(passtext.Text);
+
+            // Проверка ФИО
             string fio = fiotext.Text;
+            if (fio.Split(' ').Length < 3 || !System.Text.RegularExpressions.Regex.IsMatch(fio, @"^[а-яА-ЯёЁa-zA-Z\s]+$"))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "ФИО должно содержать минимум три слова и только буквы.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Проверка номера телефона
             string phone = phonetext.Text;
+            if (phone.Length != 11 || phone[0] != '8' || !long.TryParse(phone, out _))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Номер телефона должен начинаться с 8 и содержать 11 цифр.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            hashtext.Text = sha256(passtext.Text);
             string post = posttext.Text;
             string log = logtext.Text;
             string pass = hashtext.Text;
@@ -74,6 +88,8 @@ namespace kursovaya
                 command.ExecuteNonQuery();
                 MessageBox.Show($"Сотрудник добавлен");
             }
+            DB.CloseConnection();
+            this.Hide();
         }
     }
 }

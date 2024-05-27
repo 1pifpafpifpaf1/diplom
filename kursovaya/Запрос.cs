@@ -117,6 +117,7 @@ namespace kursovaya
                MessageBox.Show("Ошибка: Недостаточно оборудования");
             }
             DB.CloseConnection();
+            this.Hide();
         }
 
         private void listButtonControl1_Click(Nevron.Nov.Dom.NEventArgs arg)

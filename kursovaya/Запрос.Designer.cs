@@ -98,7 +98,9 @@
             this.Controls.Add(this.reqbutton);
             this.Controls.Add(this.boxcount);
             this.Controls.Add(this.eqbox);
+            this.MaximizeBox = false;
             this.Name = "Запрос";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Запрос";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

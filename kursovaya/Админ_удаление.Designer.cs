@@ -41,6 +41,7 @@
             this.addbutton.Name = "addbutton";
             this.addbutton.Size = new System.Drawing.Size(168, 51);
             this.addbutton.TabIndex = 12;
+            this.addbutton.Click += new Nevron.Nov.Function<Nevron.Nov.Dom.NEventArgs>(this.addbutton_Click);
             // 
             // eqbox
             // 
@@ -61,7 +62,9 @@
             this.ClientSize = new System.Drawing.Size(384, 242);
             this.Controls.Add(this.addbutton);
             this.Controls.Add(this.eqbox);
+            this.MaximizeBox = false;
             this.Name = "Админ_удаление";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Удаление";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

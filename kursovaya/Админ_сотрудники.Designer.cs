@@ -148,7 +148,9 @@
             this.ClientSize = new System.Drawing.Size(717, 450);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView1);
+            this.MaximizeBox = false;
             this.Name = "Админ_сотрудники";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Cотрудники";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

@@ -86,7 +86,9 @@
             this.ClientSize = new System.Drawing.Size(425, 220);
             this.Controls.Add(this.logtext);
             this.Controls.Add(this.deletebutton);
+            this.MaximizeBox = false;
             this.Name = "Удаление_Админ";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Удаление оборудования";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

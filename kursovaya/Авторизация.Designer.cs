@@ -225,7 +225,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 486);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "Авторизация";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Авторизация";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

@@ -25,7 +25,7 @@ namespace kursovaya
         {
             DB.OpenConnection();
 
-            using (MySqlCommand command = new MySqlCommand("SELECT id_sotr, fio_sotr, phone_sotr, rang_sotr FROM staff", DB.getConnection()))
+            using (MySqlCommand command = new MySqlCommand($"SELECT id_sotr, fio_sotr, phone_sotr, rang_sotr FROM staff WHERE NOT rang_sotr = '3'", DB.getConnection()))
             {
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -110,8 +110,31 @@ namespace kursovaya
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Админ_удаление_сотр sm = new Админ_удаление_сотр();
-            sm.ShowDialog();
+            /*            Админ_удаление_сотр sm = new Админ_удаление_сотр();
+                        sm.ShowDialog();*/
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Вы точно хотите удалить данного сотрудника?", "Подтверждение удаления", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                    int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id_sotr"].Value);
+
+                    DB.OpenConnection();
+                    using (MySqlCommand command = new MySqlCommand("DELETE FROM staff WHERE id_sotr = @id_sotr", DB.getConnection()))
+                    {
+                        command.Parameters.AddWithValue("@id_sotr", id);
+                        command.ExecuteNonQuery();
+                    }
+                    FillDataGridView();
+                    dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
+                    DB.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите строку для удаления.");
+            }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)

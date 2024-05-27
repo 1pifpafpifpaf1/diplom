@@ -42,6 +42,7 @@ namespace kursovaya
                 command.ExecuteNonQuery();
                 MessageBox.Show($"Склад добавлен");
             }
+            this.Hide();
         }
     }
 }

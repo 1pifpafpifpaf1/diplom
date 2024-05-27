@@ -88,8 +88,31 @@ namespace kursovaya
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Удаление_Админ sm = new Удаление_Админ();
-            sm.ShowDialog();
+            /*Удаление_Админ sm = new Удаление_Админ();
+            sm.ShowDialog();*/
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Вы точно хотите удалить данное оборудование?", "Подтверждение удаления", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                    int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id_equipment"].Value);
+
+                    DB.OpenConnection();
+                    using (MySqlCommand command = new MySqlCommand("DELETE FROM equipment WHERE id_equipment = @id_equipment", DB.getConnection()))
+                    {
+                        command.Parameters.AddWithValue("@id_equipment", id);
+                        command.ExecuteNonQuery();
+                    }
+                    FillDataGridView();
+                    dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
+                    DB.CloseConnection();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите строку для удаления.");
+            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

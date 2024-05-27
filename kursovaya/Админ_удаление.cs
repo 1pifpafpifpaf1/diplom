@@ -21,5 +21,10 @@ namespace kursovaya
         {
 
         }
+
+        private void addbutton_Click(Nevron.Nov.Dom.NEventArgs arg)
+        {
+
+        }
     }
 }
